@@ -1,57 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import {findAll, hello} from "./api/ApiUtil";
-import {Button, Input, Layout } from "antd";
-import { UserOutlined } from '@ant-design/icons';
-const { Header, Footer, Sider, Content } = Layout;
+import {Layout} from "antd";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Hello from "./Components/Hello";
+import Message from "./Components/Message";
+import MessageForm from "./Components/MessageForm";
 
+const { Content } = Layout;
 
 function App() {
 
-    const[state, setState] = useState({name:"",hello:''});
-    const[message, setMessage] = useState("");
-    const[messages, setMessages] = useState([]);
-
-    function handleChange(event){
-        console.log(event.target.value);
-        setMessage(event.target.value);
-    }
-
-    function handleMessageButton() {
-        findAll().then(response=>{
-            setMessages(response);
-        })
-    }
-
   return (
       <Layout className="layout">
-          <Header className="header">Header</Header>
+          <Header></Header>
           <Content className="content">
-              <div>
-                  <p>
-                      <Button onClick={()=>{
-                          hello().then(response=>{
-                              setState(response);
-                          })
-                      }}>Hello Button!</Button>
-                      {state.name} {state.hello} {state.date} {state.time}
-                  </p>
-
-                  <p>
-                      <Button onClick={handleMessageButton}>Find All!</Button>
-                      {messages.map((d)=>{
-                          console.log(d.message)
-                          return <li key={d.id}>{d.id}. {d.message}</li>
-                      })}
-                  </p>
-
-                  <p>
-                      <Input size="large" placeholder="large size" onChange={handleChange} prefix={<UserOutlined />} />
-                  </p>
-          </div></Content>
-          <Footer className="footer">Footer</Footer>
+              <Hello></Hello>
+              <MessageForm></MessageForm>
+              <Message></Message>
+          </Content>
+          <Footer></Footer>
       </Layout>
-
   );
 }
 
