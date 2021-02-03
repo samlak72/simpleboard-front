@@ -3,7 +3,7 @@ import {Layout} from "antd";
 function Header(){
 
     return(
-        <Layout.Header className="header">Simple Board</Layout.Header>
+        <Layout.Header className="header">Simple Board.</Layout.Header>
     )
 }
 
