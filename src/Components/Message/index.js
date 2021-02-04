@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Divider, Pagination} from "antd";
-import {findAll} from "../../api/ApiUtil";
+import {findAllSimpleboards} from "../../api/ApiUtil";
 
 function Message(){
 
@@ -11,7 +11,7 @@ function Message(){
         }
         );
     function handleMessageButton(page) {
-        findAll(page?page:0).then(response=>{
+        findAllSimpleboards(page?page:0).then(response=>{
             setMessages(response);
         })
     }
@@ -27,7 +27,6 @@ function Message(){
         <p>
             <Button onClick={()=>handleMessageButton(0)}>Find All!</Button>
             {messages.content.map((d)=>{
-                console.log(d.message)
                 return <li key={d.id}>{d.id}. {d.message}</li>
             })}
             <Divider/>
