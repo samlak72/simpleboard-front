@@ -1,6 +1,8 @@
-const URL_HELLO = "http://localhost:8080/hello";
-const URL_FINDALL = "http://localhost:8080/findAll";
-const URL_SAVE_MESSAGE = "http://localhost:8080/saveMessage";
+const URL_API = "http://localhost:8080/api/v1";
+
+const URL_HELLO = `${URL_API}/hello`;
+const URL_FINDALL = `${URL_API}/simpleboards`;
+const URL_SAVE_MESSAGE = `${URL_API}/simpleboard`;
 
 function hello() {
     return fetch(URL_HELLO)
@@ -14,19 +16,18 @@ function hello() {
         .catch(error=>console.warn(error));
 }
 
-function findAll(page) {
-    return fetch(`${URL_FINDALL}?page=${page}`)
+function findAllSimpleboards(page) {
+    return fetch(`${URL_FINDALL}/${page}`)
         .then(response => {
             return response.json();
         })
         .then(list=>{
-            console.log(list);
             return list;
         })
         .catch(error=>console.warn(error));
 }
 
-function saveMessage(message){
+function saveSimpleboard(message){
     const requestOptions = {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -45,6 +46,6 @@ function saveMessage(message){
 
 export {
     hello,
-    findAll,
-    saveMessage
+    findAllSimpleboards,
+    saveSimpleboard
 };
