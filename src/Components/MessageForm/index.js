@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
-import {Form, Input} from "antd";
+import {Form, Input, message as antMessage} from "antd";
 import {UserOutlined} from "@ant-design/icons";
-import {saveMessage} from "../../api/ApiUtil";
+import {saveSimpleboard} from "../../api/ApiUtil";
 
 function MessageForm(){
 
@@ -16,14 +16,23 @@ function MessageForm(){
         try{
             const values = await form.validateFields();
             setMessage("");
-            saveMessage(values.message)
+            saveSimpleboard(values.message)
                 .then(result=>{
-                    alert(result.message)
+                    info(result.message);
                 });
             form.resetFields();
         }catch(errorInfo){
+            error(errorInfo);
             console.log("Faild: " , errorInfo);
         }
+    }
+
+    const info = (msg) => {
+        antMessage.info(msg);
+    };
+
+    const error = (err) => {
+        antMessage.error(err);
     }
 
     return(
