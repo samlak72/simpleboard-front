@@ -31,9 +31,46 @@ function saveSimpleboard(message){
     const requestOptions = {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({message: message})
+        body: JSON.stringify(message)
     }
     return fetch(URL_SAVE_MESSAGE, requestOptions)
+        .then(response => {
+            return response.json();
+        })
+        .then(result=>{
+            console.log(result);
+            return result;
+        })
+        .catch(error=>console.warn(error));
+}
+
+function updateSimpleboard(message){
+    const requestOptions = {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: message.message,id:message.id})
+    }
+    return fetch(`${URL_SAVE_MESSAGE}/`, requestOptions)
+        .then(response => {
+            return response.json();
+        })
+        .then(result=>{
+            console.log(result);
+            return result;
+        })
+        .catch(error=>console.warn(error));
+}
+
+function deleteSimpleboard(message){
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Allow": "PUT, POST, DELETE"
+        },
+        body: JSON.stringify({message: message.message,id:message.id})
+    }
+    return fetch(`${URL_SAVE_MESSAGE}`, requestOptions)
         .then(response => {
             return response.json();
         })
@@ -47,5 +84,7 @@ function saveSimpleboard(message){
 export {
     hello,
     findAllSimpleboards,
-    saveSimpleboard
+    saveSimpleboard,
+    updateSimpleboard,
+    deleteSimpleboard,
 };
