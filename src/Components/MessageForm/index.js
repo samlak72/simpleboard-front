@@ -7,20 +7,20 @@ import {useMessageDispatch} from "../../context/message-context";
 function MessageForm(){
 
     const [form] = Form.useForm();
-    const[message, setMessage] = useState("");
+    const[message, setMessage] = useState({});
     const [inputFocus,setInputFocus] = useState(() => createRef())
 
     const messageDispatch = useMessageDispatch();
 
     function handleChange(event){
-        setMessage(event.target.value);
+        setMessage({message:event.target.value});
     }
 
     async function handlePressEnter(){
         try{
             const values = await form.validateFields();
             setMessage("");
-            saveSimpleboard(values.message)
+            saveSimpleboard({message:values.message})
                 .then(result=>{
                     info(result.message);
                 });
@@ -30,7 +30,6 @@ function MessageForm(){
             inputFocus.current.focus();
         }catch(errorInfo){
             error(errorInfo);
-            console.log("Faild: " , errorInfo);
         }
     }
 
@@ -39,7 +38,7 @@ function MessageForm(){
     };
 
     const error = (err) => {
-        antMessage.error(err);
+        antMessage.error("Mesasge Input Error!");
     }
 
     return(
@@ -59,7 +58,7 @@ function MessageForm(){
                         placeholder="Input message!!"
                         onChange={handleChange}
                         onPressEnter={handlePressEnter}
-                        value={message}
+                        value={message.message}
                         prefix={<UserOutlined />}
                         ref={inputFocus}
                     />
