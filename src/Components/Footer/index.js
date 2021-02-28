@@ -4,7 +4,7 @@ function Footer(){
 
     return(
         <Layout.Footer className="footer">
-            Samla Softward
+            Simple board
         </Layout.Footer>
     )
 }
