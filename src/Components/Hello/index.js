@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Button} from "antd";
 import {hello} from "../../api/ApiUtil";
-import HelloContext, {useHelloDispatch, useHelloState} from "../../context/hello-context";
+import {useHelloDispatch, useHelloState} from "../../context/hello-context";
 
 function Hello(){
 
