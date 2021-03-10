@@ -4,7 +4,7 @@ function Footer(){
 
     return(
         <Layout.Footer className="footer">
-            Simple board
+            Osillok@Copy right by 2021
         </Layout.Footer>
     )
 }
