@@ -43,7 +43,7 @@ function MessageForm(){
 
     return(
         <p>
-            <Form form={form} name={"messageForm"}>
+            <Form className="g-width" form={form} name={"messageForm"}>
                 <Form.Item
                     name={"message"}
                     rules={[
