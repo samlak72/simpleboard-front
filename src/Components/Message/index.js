@@ -22,10 +22,9 @@ function Message(){
         //e.target.innerHtml='x'
     }
 
-
-    const messageList = <List
+    const messageList = <List className="g-width"
         header={<div><h1>오실록(오늘의 실행 목록)</h1></div>}
-        footer={<div>나는 오늘로 실행한다.</div>}
+        footer={<div>나는 오늘도 실행한다.</div>}
         bordered
         dataSource={messageState.content}
         renderItem={item=>(
@@ -43,7 +42,6 @@ function Message(){
                         style={{width:'100%'}}
                     >{item.message}</span>
                 </Space>
-
             </List.Item>
         )}
 
@@ -100,6 +98,7 @@ function Message(){
             {/*<Button onClick={handleMessageContext} >Fill all context!</Button>*/}
             <Divider/>
             <Pagination
+                className="g-width"
                 defaultCurrent={1}
                 defaultPageSize={20}
                 total={messageState.totalElements}
