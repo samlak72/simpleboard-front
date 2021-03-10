@@ -2,22 +2,66 @@
 
 .layout {
     background-color: white;
+    height:100%;
 }
 
 .header {
     background-color: lightblue;
     margin: 0px;
-    padding: 10px
+    padding: 0px
 }
 
 .content {
     background-color: white;
     margin: 10px 10px 50px 10px;
-    padding: 10px
+    padding: 10px;
+    height:100%;
 }
-
 .footer {
     background-color: beige;
-    margin: 0px;
+    text-align: center;
+    height: 50px;
+    #position:fixed; bottom:0;
+    #width: 100%;
+}
 
+.top-nav-menu {
+    background-color: lightblue;
+    height: 65px;
+}
+.g-width {
+    max-width: 1200px;
+    margin: auto;
+}
+.top-nav  {
+    padding: 0;
+    #background-color: lightblue;
+
+}
+
+.top-logo {
+    width: 100px;
+    height: 60px;
+    /*background-color: gray;*/
+    /*background: no-repeat url(samlasoftware.svg);*/
+    /*background-size: 100px 60px;*/
+    float: left;
+    /*width: 120px;
+    height: 61px;*/
+
+}
+
+.login-form {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login-form-forgot {
+    float: right;
+}
+.ant-col-rtl .login-form-forgot {
+    float: left;
+}
+.login-form-button {
+    width: 100%;
 }
